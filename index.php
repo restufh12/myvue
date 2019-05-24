@@ -20,8 +20,22 @@
           <td>{{student.hobby}}</td>
         </tr>
       </table>
+
+      <hr>
+
+      <p>{{nametesting}}</p>
+
+      <br>
+      <input type="text" v-model="nametesting" v-on:change="tampilAlert(nametesting)">
+
+      <h3>Input Student<h3>
+      <input type="text" name="Sname" id="Sname" placeholder="Name" v-model="Sname">
+      <input type="text" name="Sage" id="Sage" placeholder="Age" v-model="Sage">
+      <input type="text" name="Shobby" id="Shobby" placeholder="Hobby" v-model="Shobby">
+      <input type="button" value="Add" v-on:click="AddStudent()">
+
     </div>
-    <hr>
+
   </body>
 
   <script src="node_modules/vue/dist/vue.js"></script>
@@ -43,8 +57,25 @@
                     name : "Deni",
                     age : "24",
                     hobby : "Badminton"
-                  }]
+                  }],
+
+      Sname : "",
+      Sage : "",
+      Shobby : "",
+      nametesting : ""
     },
+    methods : {
+      AddStudent(){
+        this.students.push({name : this.Sname, age : this.Sage, hobby : this.Shobby})
+
+        this.Sname  = ""
+        this.Sage   = ""
+        this.Shobby = ""
+      },
+      tampilAlert(nama){
+        alert(nama);
+      }
+    }
 
   })
   </script>
